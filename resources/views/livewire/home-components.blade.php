@@ -1,5 +1,19 @@
+<style>
+   .bg-peta {
+      /* background-image: url('/image/newTMIIMAP.jpg'); */
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      height: 100vh;
+      background-image: url('{{asset("image/newTMIIMAP.jpg")}}');
+      /* background-size: contain; */
+   }
+</style>
+
 <div>
-  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14204894.14349098!2d109.78677494385022!3d-2.100861175253936!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2c4c07d7496404b7%3A0xe37b4de71badf485!2sIndonesia!5e0!3m2!1sid!2sid!4v1749921027816!5m2!1sid!2sid" style="border:0; width: 100%;height:100vh;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  <div class="bg-peta" id="myDiv">
+
+  </div>
   <div class="wrapper-map">
     <input type="checkbox" id="toogle" class="hidden-trigger">
     <label for="toogle" class="circle">
@@ -42,3 +56,16 @@
     </div>
   </div>
 </div>
+
+<script>
+
+
+// mengambil posisi ketika di klik
+
+ const div = document.getElementById('myDiv');
+  div.addEventListener('click', function(e) {
+    const x = e.clientX; // posisi X terhadap viewport
+    const y = e.clientY; // posisi Y terhadap viewport
+    alert(`Klik pada posisi:\nX: ${x}, Y: ${y}`);
+  });
+</script>

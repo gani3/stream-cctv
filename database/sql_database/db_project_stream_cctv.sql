@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Waktu pembuatan: 14 Jun 2025 pada 19.47
+-- Waktu pembuatan: 28 Jun 2025 pada 08.15
 -- Versi server: 10.4.28-MariaDB
 -- Versi PHP: 8.1.17
 
@@ -82,7 +82,8 @@ CREATE TABLE `history` (
 --
 
 INSERT INTO `history` (`id`, `keterangan`, `jam`, `tanggal`, `perangkat_models_id`, `created_at`, `updated_at`) VALUES
-(1, 'ini adalah contoh history', '03:47:00', '2025-06-17', 1, '2025-06-14 10:44:00', '2025-06-14 10:46:22');
+(1, 'ini adalah contoh history', '03:47:00', '2025-06-17', 1, '2025-06-14 10:44:00', '2025-06-14 10:46:22'),
+(2, 'tes', '16:13:00', '2025-06-05', 1, '2025-06-27 02:10:47', '2025-06-27 02:10:47');
 
 -- --------------------------------------------------------
 
@@ -177,7 +178,8 @@ CREATE TABLE `pegawai` (
 --
 
 INSERT INTO `pegawai` (`id`, `nip`, `nama_pegawai`, `jenis_kelamin`, `ruangan_models_id`, `created_at`, `updated_at`) VALUES
-(1, '12346', 'Fulan Bin Fulan', 'L', 2, '2025-06-14 06:54:25', '2025-06-14 07:40:04');
+(1, '12346', 'Fulan Bin Fulan', 'L', 2, '2025-06-14 06:54:25', '2025-06-14 07:40:04'),
+(2, '3312', 'Fulan bin Fulanah', 'P', 8, '2025-06-27 02:16:38', '2025-06-27 02:16:38');
 
 -- --------------------------------------------------------
 
@@ -187,9 +189,10 @@ INSERT INTO `pegawai` (`id`, `nip`, `nama_pegawai`, `jenis_kelamin`, `ruangan_mo
 
 CREATE TABLE `perangkat` (
   `id` bigint(20) UNSIGNED NOT NULL,
+  `label_cctv` varchar(255) NOT NULL,
   `kategori` enum('CCTV','ACCESS DOOR') NOT NULL DEFAULT 'CCTV',
   `model` varchar(255) NOT NULL,
-  `ip_address` varchar(255) NOT NULL,
+  `channel` varchar(255) NOT NULL,
   `sumbu_x` double NOT NULL,
   `sumbu_y` double NOT NULL,
   `keterangan` text NOT NULL,
@@ -202,8 +205,24 @@ CREATE TABLE `perangkat` (
 -- Dumping data untuk tabel `perangkat`
 --
 
-INSERT INTO `perangkat` (`id`, `kategori`, `model`, `ip_address`, `sumbu_x`, `sumbu_y`, `keterangan`, `ruangan_models_id`, `created_at`, `updated_at`) VALUES
-(1, 'ACCESS DOOR', 'Hikvison', '172.168.9.12', 10000.1231, 20000.123, 'contoh perangkat access door', 2, '2025-06-14 09:48:36', '2025-06-14 10:38:25');
+INSERT INTO `perangkat` (`id`, `label_cctv`, `kategori`, `model`, `channel`, `sumbu_x`, `sumbu_y`, `keterangan`, `ruangan_models_id`, `created_at`, `updated_at`) VALUES
+(1, 'Gudang Meteran', 'CCTV', 'Hikvison', '3', 292, 230, 'aktif', 3, '2025-06-14 09:48:36', '2025-06-27 01:51:56'),
+(2, 'Penampakan Jalan Raya depan kantor dan Rumah dinas', 'CCTV', 'Hikvison', '17', 1444, 598, 'aktif', 8, '2025-06-27 00:24:56', '2025-06-27 02:07:17'),
+(3, 'Penampakan Depan sisi kanan Kantor', 'CCTV', 'Hikvison', '4', 636, 160, 'aktif', 8, '2025-06-27 00:27:33', '2025-06-27 01:56:35'),
+(4, 'Gudang Distribusi', 'CCTV', 'Hikvison', '2', 396, 145, 'aktif', 3, '2025-06-27 00:29:21', '2025-06-27 01:55:30'),
+(5, 'Ruang Dispatcher', 'CCTV', 'Hikvison', '5', 527, 578, 'aktif', 7, '2025-06-27 00:32:03', '2025-06-27 02:08:02'),
+(6, 'Ruang Milenial', 'CCTV', 'Hikvison', '6', 864, 221, 'aktif', 9, '2025-06-27 00:35:23', '2025-06-27 01:56:25'),
+(7, 'Gedung Olahara', 'CCTV', 'Hikvison', '7', 599, 819, 'aktif', 4, '2025-06-27 01:03:55', '2025-06-27 01:57:11'),
+(8, 'Penampakan Parkiran Depan (Motor)', 'CCTV', 'Hikvison', '16', 398, 483, 'aktif', 8, '2025-06-27 01:07:54', '2025-06-27 23:12:37'),
+(9, 'Lobby Ruang Logistik', 'CCTV', 'Hikvison', '9', 147, 272, 'aktif', 5, '2025-06-27 01:12:00', '2025-06-27 01:58:23'),
+(10, 'Penampakan Depan Sisi kiri Kantor', 'CCTV', 'Hikvison', '15', 218, 396, 'aktif', 8, '2025-06-27 01:15:18', '2025-06-27 02:00:01'),
+(11, 'Lobby Ruang Tamu', 'CCTV', 'Hikvison', '11', 768, 209, 'aktif', 5, '2025-06-27 01:19:18', '2025-06-27 01:58:40'),
+(12, 'Ruang Sekretaris Manager', 'CCTV', 'Hikvison', '8', 549, 365, 'aktif', 6, '2025-06-27 01:20:32', '2025-06-27 01:58:04'),
+(13, 'Ruang Depan Gedung Olahraga dan Masjid', 'CCTV', 'Hikvison', '14', 1232, 232, 'aktif', 4, '2025-06-27 01:22:35', '2025-06-27 02:08:50'),
+(14, 'Ruang Rapat OPI', 'CCTV', 'Hikvison', '12', 1054, 429, 'aktif', 2, '2025-06-27 01:23:03', '2025-06-27 02:06:09'),
+(15, 'Penampakan Atas Tangga Menuju LT.2', 'CCTV', 'Hikvison', '13', 734, 321, 'aktif', 10, '2025-06-27 01:25:49', '2025-06-27 01:59:26'),
+(16, 'Gedung Olahraga', 'CCTV', 'Hikvison', '18', 1366, 469, 'aktif', 4, '2025-06-27 02:03:43', '2025-06-27 02:03:43'),
+(17, 'Penampakan Belakang sisi Kiri Kantor', 'CCTV', 'Hikvison', '20', 923, 639, 'aktif', 8, '2025-06-27 02:04:21', '2025-06-27 02:04:21');
 
 -- --------------------------------------------------------
 
@@ -224,7 +243,14 @@ CREATE TABLE `ruangan` (
 
 INSERT INTO `ruangan` (`id`, `nama_ruangan`, `created_at`, `updated_at`) VALUES
 (2, 'Rapat', '2025-06-14 05:50:10', '2025-06-14 10:35:06'),
-(3, 'Gudang', '2025-06-14 05:52:14', '2025-06-14 10:36:10');
+(3, 'Gudang', '2025-06-14 05:52:14', '2025-06-14 10:36:10'),
+(4, 'Gedung Olahraga', '2025-06-27 01:53:49', '2025-06-27 01:54:38'),
+(5, 'Lobby', '2025-06-27 01:54:01', '2025-06-27 01:54:01'),
+(6, 'Ruang Sekretariat', '2025-06-27 01:54:15', '2025-06-27 01:54:15'),
+(7, 'Ruang Dispatcher', '2025-06-27 01:54:32', '2025-06-27 01:54:32'),
+(8, 'Luar Kantor', '2025-06-27 01:55:01', '2025-06-27 01:55:01'),
+(9, 'Ruang Milenial', '2025-06-27 01:56:15', '2025-06-27 01:56:15'),
+(10, 'Gedung', '2025-06-27 01:59:14', '2025-06-27 01:59:14');
 
 -- --------------------------------------------------------
 
@@ -246,7 +272,8 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('H4pOW052S75LxLWnAtwLd1vjVG9pwLXE4X4MHwbh', 1, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiY2FjT3k1bTc4ZnloVndpcDJLVlBYcUN6ZzBwYVRyN2U5UzdvNXJPdiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==', 1749923190);
+('A1dtYk6vgxZyczv91YdtsqW0C2fbpAbX5if8xwTl', 1, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiQmwySnNpQnVUYTltWTZid0M5V2V0VVpnTDQ1WVFSRElTZUp0cmxYMyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==', 1751026466),
+('TssdsiNXKBhwCe6NIwQvv6I0NWg3lslLUo3fTbVk', 1, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoidXgwYThXRWxtcVMxWktRSFdJbWU5bUhxQlNmQnFVbmdVREIwVmdBciI7czozOiJ1cmwiO2E6MTp7czo4OiJpbnRlbmRlZCI7czoyMToiaHR0cDovLzEyNy4wLjAuMTo4MDAwIjt9czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==', 1751091161);
 
 -- --------------------------------------------------------
 
@@ -272,7 +299,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `role`, `pegawai_models_id`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'fulan', 'fulan@gmail.com', 'Admin', 1, NULL, '$2y$12$oL.vt5RM/ZgmvRuuRM38ueM5VHme9KzcvatW5gkwk9OWceKyyRAFq', NULL, '2025-06-14 07:42:17', '2025-06-14 09:56:04');
+(1, 'admin', 'fulan@gmail.com', 'Admin', 1, NULL, '$2y$12$oL.vt5RM/ZgmvRuuRM38ueM5VHme9KzcvatW5gkwk9OWceKyyRAFq', NULL, '2025-06-14 07:42:17', '2025-06-27 02:20:02'),
+(2, 'user', 'user@gmail.com', 'User', 2, NULL, '$2y$12$m1AHbJp9NRy3vMLIyduSIemCA/9uyi09YrepKjnRdqtYvNF.G.1JS', NULL, '2025-06-27 02:19:40', '2025-06-27 02:19:40');
 
 --
 -- Indexes for dumped tables
@@ -375,7 +403,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT untuk tabel `history`
 --
 ALTER TABLE `history`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `jobs`
@@ -393,25 +421,25 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT untuk tabel `pegawai`
 --
 ALTER TABLE `pegawai`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `perangkat`
 --
 ALTER TABLE `perangkat`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT untuk tabel `ruangan`
 --
 ALTER TABLE `ruangan`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

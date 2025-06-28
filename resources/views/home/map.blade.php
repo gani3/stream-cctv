@@ -33,8 +33,6 @@
         <div class="">
 
         <!-- button atas -->
-         
-
            <div class="button-container">
              @if (auth()->user()->role == 'Admin')
               <button class="button" onclick="LocationDevice()" id="add-perangkat">
@@ -218,9 +216,11 @@
                     </button>
                   </div>
                   <div class="modal-body">
+                    <p id="loading"></p>
                     <video id="video" controls autoplay style="width: 100% !important;"></video>
                     <div id="video-notfound" style="display: none; text-align: center; padding: 20px;">
-                      <h4 style="color: red;">Stream tidak ditemukan / gagal dimuat</h4>
+                      <img src="image/video-notfound.png" alt="" srcset="" width="100" height="100">
+                      <h4 style="color: red; font-size: 18px;">Tidak dapat mengakses stream cctv, silahkan periksa logs stream</h4>
                     </div>
                   </div>
                   <div class="modal-footer">
@@ -323,6 +323,7 @@
         // Tampilkan modal serta mulai proses stream
         $('#label-stream').html(`${data.label_cctv}`);
         $('#stream-cctv').modal('show');
+        $('#loading').html('Proses mengambil data stream cctv '+'<b>'+data.label_cctv+'</b>...')
         mulaiStreaming(data.channel)
       });
 
@@ -369,12 +370,15 @@
           console.log('Berhasil:', data);
           const notfound = document.getElementById('video-notfound');
           const video = document.getElementById('video');
+          const loading = document.getElementById('loading');
+          
           const hls = new Hls();
           hls.loadSource(`/hls/stream${channel}/index.m3u8`); 
           hls.attachMedia(video);
           $('#akhiriStream').attr('onclick', `hentikanStreaming(${channel})`);
           video.style.display = 'block';
           notfound.style.display = 'none';
+          loading.style.display = 'none';
         })
         .catch(error => {
           $('#akhiriStream').attr('onclick', `hentikanStreaming(${channel})`);
@@ -382,6 +386,7 @@
           const notfound = document.getElementById('video-notfound');
           video.style.display = 'none';
           notfound.style.display = 'block';
+          loading.style.display = 'none';
         });
       }else{
         alert(`Perangkat yang di pilih tidak memiliki Channel ID`)

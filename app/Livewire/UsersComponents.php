@@ -46,6 +46,7 @@ class UsersComponents extends Component
         ]);
         session()->flash('success','Berhasil menambahkan user');
         $this->reset();
+        $this->dispatch('init-bootstrap-table');
     }
 
     public function create(){
@@ -95,4 +96,15 @@ class UsersComponents extends Component
         session()->flash('success', 'Berhasil menghapus data');
         $this->reset();
     }
+
+    // public function resetValue(){
+    //     $this->id = '';
+    //     $this->username = '';
+    //     $this->role = '';
+    //     $this->pegawai_models_id = '';
+    //     $this->email = '';
+    //     $this->editpage = false;
+    //     $this->listpage = true;
+    //     $this->addpage = false;
+    // }
 }

@@ -30,7 +30,7 @@
                                 <select class="form-control select2" wire:model="perangkat_models_id" id="floatingRole" style="width: 100%;">
                                     <option selected="selected">--pilih perangkat--</option>
                                     @foreach ( $devices as $device )
-                                        <option value="{{ $device->id }}">{{ $device->kategori }} ( {{ $device->model }} )</option>
+                                        <option value="{{ $device->id }}">{{ $device->label_cctv }} ( {{ $device->ruangan->nama_ruangan }} )</option>
                                     @endforeach
                                 </select>   
                                 @error('perangkat_models_id')

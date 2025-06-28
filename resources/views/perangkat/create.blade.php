@@ -9,6 +9,15 @@
                 <div class="form-horizontal" action="#" method="POST">
                     @csrf
                     <div class="card-body">
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-sm-2 col-form-label">Label CCTV</label>
+                            <div class="col-sm-10">
+                                <input type="text" wire:model="label_cctv" value="{{ @old('label_cctv') }}" class="form-control" id="floatingHp" placeholder="label cctv">
+                                @error('label_cctv')
+                                    <span class="form-text text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
                          <div class="form-group row">
                             <label for="inputEmail3" class="col-sm-2 col-form-label">Ruangan</label>
                             <div class="col-sm-10">
@@ -24,7 +33,7 @@
                             </div>
                         </div>
                          <div class="form-group row">
-                            <label for="inputEmail3" class="col-sm-2 col-form-label">Jenis Kelamin</label>
+                            <label for="inputEmail3" class="col-sm-2 col-form-label">Kategori Perangkat</label>
                             <div class="col-sm-10">
                                 <select class="form-control select2" style="width: 100%;" wire:model="kategori">
                                     <option selected="selected">--pilih kategori--</option>
@@ -46,10 +55,10 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="inputEmail3" class="col-sm-2 col-form-label">Ip Address</label>
+                            <label for="inputEmail3" class="col-sm-2 col-form-label">Channel CCTV</label>
                             <div class="col-sm-10">
-                                <input type="text" wire:model="ip_address" value="{{ @old('ip_address') }}" class="form-control" id="floatingHp" placeholder="ip address">
-                                @error('ip_address')
+                                <input type="text" wire:model="channel" value="{{ @old('channel') }}" class="form-control" id="floatingHp" placeholder="channel cctv">
+                                @error('channel')
                                     <span class="form-text text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
@@ -88,7 +97,7 @@
                         @else
                             <button wire:click="update({{ $id }})" type="button" class="btn btn-outline-success btn-sm">Update Data</button>
                         @endif
-                        <a href="/ruangan" class="btn btn-default float-right">Cancel</a>
+                        <a href="/perangkat" class="btn btn-default float-right">Cancel</a>
                     </div>
                 </div>
             </div>

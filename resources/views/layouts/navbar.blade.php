@@ -38,7 +38,7 @@
       <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
         <li class="nav-item">
           <a class="nav-link" href="/keluar" >
-            <i class="fas fa-sign-out-alt"></i> &nbsp; Sign Out
+            <i class="fas fa-sign-out-alt"></i> &nbsp; Sign Out 
           </a>
         </li>
       </ul>

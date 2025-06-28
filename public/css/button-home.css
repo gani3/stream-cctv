@@ -168,3 +168,43 @@ footer .demo a {
   transition: 0.7s;
 }
 
+
+
+.button-container {
+  display: flex;
+  position: absolute;
+  right: 1rem;
+  top: 0.5rem;
+  background-color: #FFFF;
+  width: 100px;
+  height: 40px;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px
+        /* rgba(245, 73, 144, 0.5) 5px 10px 15px; */
+}
+
+.button {
+  outline: 0 !important;
+  border: 0 !important;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  transition: all ease-in-out 0.3s;
+  cursor: pointer;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+}
+
+.icon {
+  font-size: 20px;
+  color: #000000;
+}

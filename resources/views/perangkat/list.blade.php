@@ -8,9 +8,10 @@
       <thead>
         <tr>
           <th class="text-center">No</th>
+          <th>Label CCTV</th>
           <th>Kategori</th>
           <th>Model</th>
-          <th>IP Address</th>
+          <th>Channel CCTV</th>
           <th>Koordinat</th>
           <th>Keterangan</th>
           <th>Ruangan</th>
@@ -21,9 +22,10 @@
         @forelse ($devices as $device )
           <tr>
             <td scope="row" class="text-center">{{ $loop->iteration }}</td>
+            <td>{{ $device->label_cctv }}</td>
             <td>{{ $device->kategori }}</td>
             <td>{{ $device->model }}</td>
-            <td>{{ $device->ip_address }}</td>
+            <td>{{ $device->channel }}</td>
             <td>sumbu X : <b>{{ $device->sumbu_x }}</b> , sumbu Y : <b>{{ $device->sumbu_y }}</b></td>
             <td>{{ $device->keterangan}}</td>
             <td>{{ $device->ruangan->nama_ruangan}}</td>

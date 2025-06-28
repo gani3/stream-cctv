@@ -12,7 +12,7 @@ class PerangkatModels extends Model
 
     protected $table="perangkat";
     protected $primary_key = "id";
-    protected $fillable = ['kategori','model','ip_address','sumbu_x','sumbu_y','keterangan','ruangan_models_id'];
+    protected $fillable = ['kategori','label_cctv','model','channel','sumbu_x','sumbu_y','keterangan','ruangan_models_id'];
 
 
     public function ruangan():BelongsTo{

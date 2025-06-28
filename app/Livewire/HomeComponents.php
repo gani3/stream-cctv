@@ -55,6 +55,6 @@ class HomeComponents extends Component
         $this->listperangkat = PerangkatModels::with('ruangan')->orderBy('model','desc')->get();
         $this->dispatch('perangkat-disimpan');
     }
-    
+
 
 }

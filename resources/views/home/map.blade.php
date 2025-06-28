@@ -1,3 +1,5 @@
+
+<script src="{{asset('template')}}/dist/js/hls_latest.js"></script>
 <style>
    .bg-peta {
       /* background-image: url('/image/newTMIIMAP.jpg'); */
@@ -207,7 +209,7 @@
 
             <!-- modal box stream cctv -->
             <div class="modal fade" wire:ignore.self id="stream-cctv" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-backdrop="static" data-keyboard="false" aria-hidden="true">
-              <div class="modal-dialog" role="document">
+              <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
                     <h5 class="modal-title" id="label-stream" style="text-transform: capitalize;"></h5>
@@ -216,10 +218,13 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                     untuk stream
+                    <video id="video" controls autoplay style="width: 100% !important;"></video>
+                    <div id="video-notfound" style="display: none; text-align: center; padding: 20px;">
+                      <h4 style="color: red;">Stream tidak ditemukan / gagal dimuat</h4>
+                    </div>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-sm btn-secondary" id="akhiriStream" data-dismiss="modal">Close</button>
                   </div>
                 </div>
               </div>
@@ -245,7 +250,6 @@
           sumbuXInput.dispatchEvent(new Event('input'));
           sumbuYInput.dispatchEvent(new Event('input'));
           $('#exampleModal').modal('show');
-          // alert(`Klik pada posisi:\nX: ${x}, Y: ${y}`);
         };
 
         div.addEventListener('click', clickHandler);
@@ -307,8 +311,6 @@
           'ruangan_models_id': data.ruangan_models_id
         };
 
-        console.log(data);
-        
         // for (const [field, value] of Object.entries(inputMappings)) {
         //   const input = document.querySelector(`[wire\\:model="${field}"]`);
         //   if (input) {
@@ -317,9 +319,11 @@
         //   }
         // }
 
-        // Tampilkan modal
+
+        // Tampilkan modal serta mulai proses stream
         $('#label-stream').html(`${data.label_cctv}`);
         $('#stream-cctv').modal('show');
+        mulaiStreaming(data.channel)
       });
 
       // Label jika ada
@@ -344,5 +348,68 @@
       close.classList.add('d-none')
       button.classList.remove('d-none')
       add.classList.remove('d-none')
+    }
+
+
+    // untuk stream hls file sesuai dengan channel yang dipilih
+    function mulaiStreaming(channel) {
+      if (channel) {
+        fetch("{{ route('stream.start') }}", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "X-CSRF-TOKEN": "{{ csrf_token() }}"
+          },
+          body: JSON.stringify({
+            channel: channel
+          })
+        })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Berhasil:', data);
+          const notfound = document.getElementById('video-notfound');
+          const video = document.getElementById('video');
+          const hls = new Hls();
+          hls.loadSource(`/hls/stream${channel}/index.m3u8`); 
+          hls.attachMedia(video);
+          $('#akhiriStream').attr('onclick', `hentikanStreaming(${channel})`);
+          video.style.display = 'block';
+          notfound.style.display = 'none';
+        })
+        .catch(error => {
+          $('#akhiriStream').attr('onclick', `hentikanStreaming(${channel})`);
+          const video = document.getElementById('video');
+          const notfound = document.getElementById('video-notfound');
+          video.style.display = 'none';
+          notfound.style.display = 'block';
+        });
+      }else{
+        alert(`Perangkat yang di pilih tidak memiliki Channel ID`)
+      }
+    }
+
+    function hentikanStreaming(channel) {
+      console.log(channel);
+      if (channel) {
+        fetch("{{ route('stream.stop') }}", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "X-CSRF-TOKEN": "{{ csrf_token() }}"
+          },
+          body: JSON.stringify({
+            channel: channel
+          })
+        })
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+          alert(`Streaming channel ${channel} dihentikan`);
+        })
+        .catch(error => {
+          console.error('Gagal menghentikan:', error);
+          alert('Gagal menghentikan streaming');
+        });
+      }
     }
   </script>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\StreamingController;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -14,6 +15,8 @@ Route::get('login',[LoginController::class,'index'])->name('login');
 Route::post('login',[LoginController::class,'proses'])->name('login.proses');
 Route::get('keluar',[LoginController::class,'keluar'])->name('login.keluar');
 
+Route::post('/start-stream', [StreamingController::class, 'start'])->name('stream.start');
+Route::post('/stop-stream', [StreamingController::class, 'stop'])->name('stream.stop');
 
 Route::get('/map-cctv', function () {
     return view('layouts.template');

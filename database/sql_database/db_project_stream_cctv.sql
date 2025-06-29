@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Waktu pembuatan: 28 Jun 2025 pada 08.15
+-- Waktu pembuatan: 29 Jun 2025 pada 08.42
 -- Versi server: 10.4.28-MariaDB
 -- Versi PHP: 8.1.17
 
@@ -206,23 +206,24 @@ CREATE TABLE `perangkat` (
 --
 
 INSERT INTO `perangkat` (`id`, `label_cctv`, `kategori`, `model`, `channel`, `sumbu_x`, `sumbu_y`, `keterangan`, `ruangan_models_id`, `created_at`, `updated_at`) VALUES
-(1, 'Gudang Meteran', 'CCTV', 'Hikvison', '3', 292, 230, 'aktif', 3, '2025-06-14 09:48:36', '2025-06-27 01:51:56'),
-(2, 'Penampakan Jalan Raya depan kantor dan Rumah dinas', 'CCTV', 'Hikvison', '17', 1444, 598, 'aktif', 8, '2025-06-27 00:24:56', '2025-06-27 02:07:17'),
-(3, 'Penampakan Depan sisi kanan Kantor', 'CCTV', 'Hikvison', '4', 636, 160, 'aktif', 8, '2025-06-27 00:27:33', '2025-06-27 01:56:35'),
-(4, 'Gudang Distribusi', 'CCTV', 'Hikvison', '2', 396, 145, 'aktif', 3, '2025-06-27 00:29:21', '2025-06-27 01:55:30'),
-(5, 'Ruang Dispatcher', 'CCTV', 'Hikvison', '5', 527, 578, 'aktif', 7, '2025-06-27 00:32:03', '2025-06-27 02:08:02'),
-(6, 'Ruang Milenial', 'CCTV', 'Hikvison', '6', 864, 221, 'aktif', 9, '2025-06-27 00:35:23', '2025-06-27 01:56:25'),
-(7, 'Gedung Olahara', 'CCTV', 'Hikvison', '7', 599, 819, 'aktif', 4, '2025-06-27 01:03:55', '2025-06-27 01:57:11'),
-(8, 'Penampakan Parkiran Depan (Motor)', 'CCTV', 'Hikvison', '16', 398, 483, 'aktif', 8, '2025-06-27 01:07:54', '2025-06-27 23:12:37'),
-(9, 'Lobby Ruang Logistik', 'CCTV', 'Hikvison', '9', 147, 272, 'aktif', 5, '2025-06-27 01:12:00', '2025-06-27 01:58:23'),
-(10, 'Penampakan Depan Sisi kiri Kantor', 'CCTV', 'Hikvison', '15', 218, 396, 'aktif', 8, '2025-06-27 01:15:18', '2025-06-27 02:00:01'),
-(11, 'Lobby Ruang Tamu', 'CCTV', 'Hikvison', '11', 768, 209, 'aktif', 5, '2025-06-27 01:19:18', '2025-06-27 01:58:40'),
-(12, 'Ruang Sekretaris Manager', 'CCTV', 'Hikvison', '8', 549, 365, 'aktif', 6, '2025-06-27 01:20:32', '2025-06-27 01:58:04'),
-(13, 'Ruang Depan Gedung Olahraga dan Masjid', 'CCTV', 'Hikvison', '14', 1232, 232, 'aktif', 4, '2025-06-27 01:22:35', '2025-06-27 02:08:50'),
-(14, 'Ruang Rapat OPI', 'CCTV', 'Hikvison', '12', 1054, 429, 'aktif', 2, '2025-06-27 01:23:03', '2025-06-27 02:06:09'),
-(15, 'Penampakan Atas Tangga Menuju LT.2', 'CCTV', 'Hikvison', '13', 734, 321, 'aktif', 10, '2025-06-27 01:25:49', '2025-06-27 01:59:26'),
-(16, 'Gedung Olahraga', 'CCTV', 'Hikvison', '18', 1366, 469, 'aktif', 4, '2025-06-27 02:03:43', '2025-06-27 02:03:43'),
-(17, 'Penampakan Belakang sisi Kiri Kantor', 'CCTV', 'Hikvison', '20', 923, 639, 'aktif', 8, '2025-06-27 02:04:21', '2025-06-27 02:04:21');
+(1, 'Ruang Milenial', 'CCTV', 'Hikvison', '3', 1319, 496, 'aktif', 9, '2025-06-14 09:48:36', '2025-06-28 23:35:14'),
+(2, 'Penampakan Jalan Raya depan kantor dan Rumah dinas', 'CCTV', 'Hikvison', '17', 320, 633, 'aktif', 8, '2025-06-27 00:24:56', '2025-06-28 23:23:32'),
+(3, 'Penampakan Depan sisi kanan Kantor', 'CCTV', 'Hikvison', '5', 374, 456, 'aktif', 8, '2025-06-27 00:27:33', '2025-06-28 23:40:10'),
+(4, 'Gudang Distribusi Depan', 'CCTV', 'Hikvison', '2', 939, 632, 'aktif', 3, '2025-06-27 00:29:21', '2025-06-28 23:37:58'),
+(5, 'Ruang Dispatcher', 'CCTV', 'Hikvison', '6', 442, 639, 'aktif', 7, '2025-06-27 00:32:03', '2025-06-28 23:40:27'),
+(6, 'Gudang Meteran', 'CCTV', 'Hikvison', '4', 968, 667, 'aktif', 3, '2025-06-27 00:35:23', '2025-06-28 23:39:49'),
+(7, 'Gedung Olahraga', 'CCTV', 'Hikvison', '7', 948, 580, 'aktif', 4, '2025-06-27 01:03:55', '2025-06-28 23:29:07'),
+(8, 'Penampakan Parkiran Depan (Motor)', 'CCTV', 'Hikvison', '16', 581, 563, 'aktif', 8, '2025-06-27 01:07:54', '2025-06-28 23:21:33'),
+(9, 'Lobby Ruang Logistik', 'CCTV', 'Hikvison', '9', 868, 658, 'aktif', 5, '2025-06-27 01:12:00', '2025-06-28 23:25:15'),
+(10, 'Penampakan Depan Sisi kiri Kantor', 'CCTV', 'Hikvison', '15', 668, 603, 'aktif', 8, '2025-06-27 01:15:18', '2025-06-28 23:19:38'),
+(11, 'Lobby Ruang Tamu', 'CCTV', 'Hikvison', '11', 516, 531, 'aktif', 5, '2025-06-27 01:19:18', '2025-06-28 23:22:10'),
+(12, 'Ruang Sekretaris Manager', 'CCTV', 'Hikvison', '8', 1265, 454, 'aktif', 6, '2025-06-27 01:20:32', '2025-06-28 23:15:39'),
+(13, 'Ruang Depan Gedung Olahraga dan Masjid', 'CCTV', 'Hikvison', '14', 741, 587, 'aktif', 4, '2025-06-27 01:22:35', '2025-06-28 23:18:49'),
+(14, 'Ruang Rapat OPI', 'CCTV', 'Hikvison', '12', 1375, 437, 'aktif', 2, '2025-06-27 01:23:03', '2025-06-28 23:14:49'),
+(15, 'Penampakan Atas Tangga Menuju LT.2', 'CCTV', 'Hikvison', '13', 629, 490, 'aktif', 10, '2025-06-27 01:25:49', '2025-06-28 23:20:29'),
+(16, 'Aula', 'CCTV', 'Hikvison', '18', 687, 552, 'aktif', 4, '2025-06-27 02:03:43', '2025-06-28 23:29:41'),
+(17, 'Penampakan Belakang sisi Kiri Kantor', 'CCTV', 'Hikvison', '20', 777, 529, 'aktif', 8, '2025-06-27 02:04:21', '2025-06-28 23:17:50'),
+(18, 'Gudang Distribusi Belakang', 'CCTV', 'Hikvison', '1', 908, 646, 'aktif', 3, '2025-06-28 23:32:40', '2025-06-28 23:32:40');
 
 -- --------------------------------------------------------
 
@@ -272,8 +273,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('A1dtYk6vgxZyczv91YdtsqW0C2fbpAbX5if8xwTl', 1, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiQmwySnNpQnVUYTltWTZid0M5V2V0VVpnTDQ1WVFSRElTZUp0cmxYMyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==', 1751026466),
-('TssdsiNXKBhwCe6NIwQvv6I0NWg3lslLUo3fTbVk', 1, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoidXgwYThXRWxtcVMxWktRSFdJbWU5bUhxQlNmQnFVbmdVREIwVmdBciI7czozOiJ1cmwiO2E6MTp7czo4OiJpbnRlbmRlZCI7czoyMToiaHR0cDovLzEyNy4wLjAuMTo4MDAwIjt9czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==', 1751091161);
+('fDA67lEN6pd12gN9QSpYAw7RJjEHQKFx5yoQJRtZ', 1, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiNVE4YXNJSW93eHo4N2tHTjdVMmY0UXBiejJocjVWU0ZWMkFjRzBSayI7czozOiJ1cmwiO2E6MTp7czo4OiJpbnRlbmRlZCI7czoyMToiaHR0cDovLzEyNy4wLjAuMTo4MDAwIjt9czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==', 1751179240);
 
 -- --------------------------------------------------------
 
@@ -427,7 +427,7 @@ ALTER TABLE `pegawai`
 -- AUTO_INCREMENT untuk tabel `perangkat`
 --
 ALTER TABLE `perangkat`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT untuk tabel `ruangan`

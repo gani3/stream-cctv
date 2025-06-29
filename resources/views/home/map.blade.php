@@ -159,7 +159,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-2 col-form-label">Ip Address</label>
+                                <label for="inputEmail3" class="col-sm-2 col-form-label">Channel Cctv</label>
                                 <div class="col-sm-10">
                                     <input type="text" wire:model="channel" value="{{ @old('channel') }}" class="form-control" id="floatingHp" placeholder="Channel Cctv">
                                     @error('channel')

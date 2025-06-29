@@ -42,8 +42,8 @@
                   <img src="{{asset('image/close.png')}}" alt="users" width="25" srcset="">
               </button>
             @endif
-            <button class="button" onclick="window.location.href='/keluar'">
-              <img src="{{asset('image/sign-out.png')}}" alt="users" width="25" srcset="">
+            <button class="button" onclick="window.location.href='/keluar'" style="color:black">
+              <img src="{{asset('image/logout.png')}}" alt="users" width="25" srcset="">
             </button>
           </div>
           <div id="device-data" data-list='{{ $listperangkat }}'></div>
@@ -101,7 +101,7 @@
 
             <!-- modal box -->
             <div class="modal fade" wire:ignore.self id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-backdrop="static" data-keyboard="false" aria-hidden="true">
-              <div class="modal-dialog" role="document">
+              <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Tambah Lokasi Perangkat</h5>
@@ -125,7 +125,7 @@
                             <div class="form-group row">
                                 <label for="inputEmail3" class="col-sm-2 col-form-label">Ruangan</label>
                                 <div class="col-sm-10">
-                                    <select class="form-control select2" wire:model="ruangan_models_id" id="floatingRole" style="width: 100%;">
+                                    <select class="form-control" wire:model="ruangan_models_id" id="floatingRole" style="width: 100%;">
                                         <option value="">--pilih ruangan--</option>
                                         @foreach ( $rooms as $room )
                                             <option value="{{ $room->id }}">{{ $room->nama_ruangan }}</option>
@@ -139,7 +139,7 @@
                             <div class="form-group row">
                                 <label for="inputEmail3" class="col-sm-2 col-form-label">Kategori Perangkat</label>
                                 <div class="col-sm-10">
-                                    <select class="form-control select2" style="width: 100%;" wire:model="kategori">
+                                    <select class="form-control" style="width: 100%;" wire:model="kategori" id="kategoriSelect">
                                         <option value="">--pilih kategori--</option>
                                         <option value="CCTV">CCTV</option>
                                         <option value="ACCESS DOOR">ACCESS DOOR</option>
@@ -295,7 +295,11 @@
       wrapper.style.cursor = 'pointer';
 
       const markerImg = document.createElement('img');
-      markerImg.src = '/image/cctv.png';
+      if (data.kategori == 'ACCESS DOOR') {
+        markerImg.src = '/image/access-door.png';
+      }else{
+        markerImg.src = '/image/cctv.png';
+      }
       markerImg.className = 'marker';
 
       // Event click pada marker
@@ -321,10 +325,14 @@
 
 
         // Tampilkan modal serta mulai proses stream
-        $('#label-stream').html(`${data.label_cctv}`);
-        $('#stream-cctv').modal('show');
-        $('#loading').html('Proses mengambil data stream cctv '+'<b>'+data.label_cctv+'</b>...')
-        mulaiStreaming(data.channel)
+        if (data.kategori != 'ACCESS DOOR') {
+          $('#label-stream').html(`${data.label_cctv}`);
+          $('#stream-cctv').modal('show');
+          $('#loading').html('Proses mengambil data stream cctv '+'<b>'+data.label_cctv+'</b>...')
+          mulaiStreaming(data.channel)
+        }else{
+          alert('Fitur Access dor masih dalam tahap pengembangan !!!')
+        } 
       });
 
       // Label jika ada

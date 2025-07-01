@@ -22,6 +22,9 @@
           <li class="nav-item">
             <a href="/history" class="nav-link">History</a>
           </li>
+          <li class="nav-item">
+            <a href="/buku-tamu" class="nav-link">Buku Tamu</a>
+          </li>
           <li class="nav-item dropdown">
             <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Master Data</a>
             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">

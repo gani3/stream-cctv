@@ -42,3 +42,7 @@ Route::get('/history',function(){
     return view('history.index');
 })->middleware('auth')->name('history');
 
+Route::get('/buku-tamu',function(){
+    return view('buku-tamu.index');
+})->middleware('auth')->name('buku-tamu');
+
